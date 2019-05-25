@@ -4,12 +4,13 @@ import Entities.Entities;
 
 public class BigSlime extends Entities {
     private static int health;
-    private final int attack = 25;
+    private final int ATTACK = 25;
+
 
     public BigSlime(){
         health = 80;
+        isAlive = true;
     }
-
 
     public String getName() {
         return "Big Slime";
@@ -23,7 +24,7 @@ public class BigSlime extends Entities {
         return health;
     }
 
-    public int getAttack() {
-        return attack;
+    public int getATTACK() {
+        return ATTACK;
     }
 }

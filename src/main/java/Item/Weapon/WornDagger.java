@@ -2,8 +2,9 @@ package Item.Weapon;
 
 
 public class WornDagger implements Weapon {
-    public final double RARITY = 0.30;
-    public final int ATTACK = 70;
+    private final double RARITY = 0.30;
+    private final int ATTACK = 70;
+    private String name = "Worn dagger";
 
     @Override
     public int getAttackValue() {
@@ -13,5 +14,10 @@ public class WornDagger implements Weapon {
     @Override
     public double getRarity() {
         return RARITY;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

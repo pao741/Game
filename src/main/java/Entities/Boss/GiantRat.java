@@ -4,10 +4,11 @@ import Entities.Entities;
 
 public class GiantRat extends Entities {
     private static int health;
-    private final int attack = 30;
+    private final int ATTACK = 30;
 
     public GiantRat(){
         health = 90;
+        isAlive = true;
     }
     public String getName() {
         return "GiantRat";
@@ -21,8 +22,8 @@ public class GiantRat extends Entities {
         return health;
     }
 
-    public int getAttack() {
-        return attack;
+    public int getATTACK() {
+        return ATTACK;
     }
 
 }

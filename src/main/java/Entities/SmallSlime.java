@@ -2,7 +2,7 @@ package Entities;
 
 public class SmallSlime extends Entities{
     private static int health;
-    private final int attack = 10;
+    private final int ATTACK = 10;
 
     SmallSlime(){
         health = 10;
@@ -19,8 +19,8 @@ public class SmallSlime extends Entities{
         return health;
     }
 
-    public int getAttack() {
-        return attack;
+    public int getATTACK() {
+        return ATTACK;
     }
 
 }

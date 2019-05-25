@@ -14,6 +14,9 @@ public class EntitiesFactory {
             case "Theif":
                 Theif theif = new Theif();
                 return theif;
+            case "Skeleton":
+                Skeleton skeleton = new Skeleton();
+                return skeleton;
             case "Animated Golem":
                 AnimatedGolem animatedGolem = new AnimatedGolem();
                 return animatedGolem;

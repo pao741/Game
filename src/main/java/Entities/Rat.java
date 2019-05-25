@@ -2,10 +2,11 @@ package Entities;
 
 public class Rat extends Entities{
     private static int health;
-    private final int attack = 15;
+    private final int ATTACK = 15;
 
     Rat(){
         health = 30;
+        isAlive = true;
     }
 
     public String getName() {
@@ -20,8 +21,8 @@ public class Rat extends Entities{
         return health;
     }
 
-    public int getAttack() {
-        return attack;
+    public int getATTACK() {
+        return ATTACK;
     }
 
 }

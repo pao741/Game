@@ -1,20 +1,16 @@
-package Entities.Boss;
+package Entities;
 
-import Entities.Entities;
-
-public class AnimatedGolem extends Entities {
+public class Skeleton extends Entities {
     private static int health;
-
     private final int ATTACK = 25;
 
-    public AnimatedGolem(){
-        health = 120;
+    Skeleton(){
+        health = 40;
         isAlive = true;
     }
 
-
     public String getName() {
-        return "Animated Gloem";
+        return "Skeleton";
     }
 
     public void setHealth(int health) {

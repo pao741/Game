@@ -2,7 +2,7 @@ package Entities;
 
 public class Theif extends Entities {
     private static int health;
-    private final int attack = 20;
+    private final int ATTACK = 20;
 
     Theif(){
         health = 20;
@@ -20,7 +20,7 @@ public class Theif extends Entities {
         return health;
     }
 
-    public int getAttack() {
-        return attack;
+    public int getATTACK() {
+        return ATTACK;
     }
 }
