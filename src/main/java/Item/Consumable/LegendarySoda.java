@@ -1,8 +1,8 @@
 package Item.Consumable;
 
-public class Burger implements Consumable{
-    public final double RARITY = 0.70;
-    public final int RESTORES = 35;
+public class LegendarySoda implements Consumable{
+    public final double RARITY = 0.01;
+    public final int RESTORES = Integer.MAX_VALUE;
 
     @Override
     public int getRestores() {

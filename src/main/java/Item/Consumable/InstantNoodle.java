@@ -2,7 +2,7 @@ package Item.Consumable;
 
 import java.util.Random;
 
-public class InstantNoodle {
+public class InstantNoodle implements Consumable{
     public final double RARITY = 0.90;
     public int restores;
     public Random rand = new Random();
@@ -16,6 +16,16 @@ public class InstantNoodle {
         }else{
             restores = 15;
         }
+    }
+
+    @Override
+    public int getRestores() {
+        return restores;
+    }
+
+    @Override
+    public double getRarity() {
+        return RARITY;
     }
 }
 
