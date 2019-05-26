@@ -10,10 +10,6 @@ public class TornNotebook implements Weapon{
         return ATTACK;
     }
 
-    @Override
-    public double getRarity() {
-        return RARITY;
-    }
 
     @Override
     public String getName() {

@@ -14,7 +14,7 @@ public class Player {
 
     private static int exp = 0;
 
-    private static ArrayList<Consumable> inventory;
+    private static ArrayList<Item> inventory;
 
     private static Weapon weapon;
 
@@ -26,7 +26,7 @@ public class Player {
         level = 1;
         position = new int[]{2,0};
         health = 20;
-        weapon = new Stick();
+        inventory.add(new Stick());
         inventory.add(new Bandage());
         inventory.add(new Bandage());
     }
@@ -78,11 +78,11 @@ public class Player {
         }
     }
 
-    public static ArrayList<Consumable> getInventory() {
+    public static ArrayList<Item> getInventory() {
         return inventory;
     }
 
-    public static void setInventory(ArrayList<Consumable> inventory) {
+    public static void setInventory(ArrayList<Item> inventory) {
         Player.inventory = inventory;
     }
 

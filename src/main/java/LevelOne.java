@@ -1,5 +1,5 @@
 public class LevelOne extends Map{
-    private static int[][] grid = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+    private static int[][] grid = {{1,2,1,2},{2,3,1,1},{1,2,2,1},{1,2,2,3}};
 
     @Override
     public int[][] getGrid() {

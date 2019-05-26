@@ -5,6 +5,4 @@ public abstract class Map {
 
     public abstract void setGrid(int[] position, int setTo);
 
-
-
 }

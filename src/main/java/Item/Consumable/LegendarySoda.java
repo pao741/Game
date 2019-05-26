@@ -12,11 +12,6 @@ public class LegendarySoda implements Consumable{
     }
 
     @Override
-    public double getRarity() {
-        return RARITY;
-    }
-
-    @Override
     public String getName() {
         return NAME;
     }

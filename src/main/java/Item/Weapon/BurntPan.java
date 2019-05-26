@@ -15,8 +15,4 @@ public class BurntPan implements Weapon{
         return ATTACK;
     }
 
-    @Override
-    public double getRarity() {
-        return RARITY;
-    }
 }
