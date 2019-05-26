@@ -1,4 +1,5 @@
 import Item.Consumable.Bandage;
+import Item.Consumable.Consumable;
 import Item.Item;
 import Item.Weapon.Stick;
 import Item.Weapon.Weapon;
@@ -13,7 +14,7 @@ public class Player {
 
     private static int exp = 0;
 
-    private static ArrayList<Item> inventory;
+    private static ArrayList<Consumable> inventory;
 
     private static Weapon weapon;
 
@@ -47,6 +48,12 @@ public class Player {
         }
     }
 
+    public void useConsumable(Consumable consumable){
+        health += consumable.getRestores();
+        System.out.println("You are healed for : " + consumable.getRestores());
+        inventory.remove(consumable);
+    }
+
     public static int getHealth() {
         return health;
     }
@@ -71,11 +78,11 @@ public class Player {
         }
     }
 
-    public static ArrayList<Item> getInventory() {
+    public static ArrayList<Consumable> getInventory() {
         return inventory;
     }
 
-    public static void setInventory(ArrayList<Item> inventory) {
+    public static void setInventory(ArrayList<Consumable> inventory) {
         Player.inventory = inventory;
     }
 

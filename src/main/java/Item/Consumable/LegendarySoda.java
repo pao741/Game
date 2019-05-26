@@ -1,8 +1,10 @@
 package Item.Consumable;
 
+
 public class LegendarySoda implements Consumable{
-    public final double RARITY = 0.01;
-    public final int RESTORES = Integer.MAX_VALUE;
+    private final double RARITY = 0.01;
+    private final int RESTORES = Integer.MAX_VALUE;
+    private final String NAME = "Legendary Soda";
 
     @Override
     public int getRestores() {
@@ -12,5 +14,10 @@ public class LegendarySoda implements Consumable{
     @Override
     public double getRarity() {
         return RARITY;
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 }

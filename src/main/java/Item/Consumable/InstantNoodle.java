@@ -5,6 +5,7 @@ import java.util.Random;
 public class InstantNoodle implements Consumable{
     public final double RARITY = 0.90;
     public int restores;
+    private final String NAME = "Instant noodle";
     public Random rand = new Random();
 
     public InstantNoodle(){
@@ -26,6 +27,11 @@ public class InstantNoodle implements Consumable{
     @Override
     public double getRarity() {
         return RARITY;
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 }
 
