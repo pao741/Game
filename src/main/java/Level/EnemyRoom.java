@@ -1,9 +1,11 @@
+package Level;
+
 import Entities.*;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class EnemyRoom {
+public class EnemyRoom extends Room{
 
     private static ArrayList<Entities> enemies = new ArrayList<Entities>();
 
@@ -14,6 +16,9 @@ public class EnemyRoom {
     private final double smallSlimeSpawn = 0.5;
 
     private final double theifSpawn = 0.25;
+
+    private final String NAME = "Enemy room";
+
 
     private Random rand = new Random();
 
@@ -47,5 +52,10 @@ public class EnemyRoom {
             enemies.add(rat);
         }
 
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 }

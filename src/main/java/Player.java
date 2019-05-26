@@ -1,8 +1,6 @@
-import Item.Consumable.Bandage;
-import Item.Consumable.Consumable;
-import Item.Item;
-import Item.Weapon.Stick;
-import Item.Weapon.Weapon;
+import Item.Consumable.*;
+import Item.*;
+import Item.Weapon.*;
 
 import java.util.ArrayList;
 
@@ -14,7 +12,7 @@ public class Player {
 
     private static int exp = 0;
 
-    private static ArrayList<Item> inventory;
+    private static ArrayList<Item> inventory = new ArrayList<Item>();
 
     private static Weapon weapon;
 
@@ -26,9 +24,9 @@ public class Player {
         level = 1;
         position = new int[]{2,0};
         health = 20;
-        inventory.add(new Stick());
-        inventory.add(new Bandage());
-        inventory.add(new Bandage());
+        inventory.add(ItemFactory.createItem("Stick"));
+        inventory.add(ItemFactory.createItem("Bandage"));
+        inventory.add(ItemFactory.createItem("Bandage"));
     }
 
     public void levelUp(){
@@ -54,51 +52,56 @@ public class Player {
         inventory.remove(consumable);
     }
 
-    public static int getHealth() {
+    public int getHealth() {
         return health;
     }
 
-    public static void setHealth(int health) {
+    public void setHealth(int health) {
         Player.health = health;
     }
 
-    public static int getMaxHealth() {
+    public int getMaxHealth() {
         return maxHealth;
     }
 
-    public static void setMaxHealth(int maxHealth) {
+    public void setMaxHealth(int maxHealth) {
         Player.maxHealth = maxHealth;
     }
 
-    public static void increaseExp(int exp) {
-        Player.exp += exp;
+    public void increaseExp(int exp) {
+        this.exp += exp;
         while(exp > level * 10){
             exp -= level * 10;
             level += 1;
         }
     }
 
-    public static ArrayList<Item> getInventory() {
+    public ArrayList<Item> getInventory() {
         return inventory;
     }
 
-    public static void setInventory(ArrayList<Item> inventory) {
+    public void setInventory(ArrayList<Item> inventory) {
         Player.inventory = inventory;
     }
 
-    public static Weapon getWeapon() {
+    public Weapon getWeapon() {
         return weapon;
     }
 
-    public static void setWeapon(Weapon weapon) {
+    public void setWeapon(Weapon weapon) {
         Player.weapon = weapon;
     }
 
-    public static int[] getPosition() {
+    public int[] getPosition() {
         return position;
     }
 
-    public static void setPosition(int[] position) {
+    public void setPosition(int[] position) {
         Player.position = position;
+    }
+
+    public void give(Item item){
+        inventory.add(item);
+        System.out.println("You got a " + item.getName());
     }
 }

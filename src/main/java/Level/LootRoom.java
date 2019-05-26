@@ -1,3 +1,5 @@
+package Level;
+
 import Item.Consumable.*;
 import Item.Item;
 import Item.ItemFactory;
@@ -6,7 +8,7 @@ import Item.Weapon.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class LootRoom {
+public class LootRoom extends Room{
 
     private static ArrayList<Item> loot = new ArrayList<Item>();
 
@@ -19,6 +21,11 @@ public class LootRoom {
     private final double burger = 0.35;
 
     private final double legendarySoda = 0.05;
+
+    private final String NAME = "Loot room";
+
+    private static boolean isCleared = false;
+
 
     private Random rand = new Random();
 
@@ -39,13 +46,15 @@ public class LootRoom {
     public void spawnConsumable(){
         double num = rand.nextDouble();
         if (num <= legendarySoda){
-            LegendarySoda legendarySoda = (LegendarySoda) ItemFactory.createItem("Legendary Soda");
+            LegendarySoda legendarySoda =
+                    (LegendarySoda) ItemFactory.createItem("Legendary Soda");
             loot.add(legendarySoda);
         }else if(num <= burger){
             Burger burger = (Burger)ItemFactory.createItem("Burger");
             loot.add(burger);
         }else if(num <= instantNoodle){
-            InstantNoodle instantNoodle = (InstantNoodle) ItemFactory.createItem("Instant Noodle");
+            InstantNoodle instantNoodle =
+                    (InstantNoodle) ItemFactory.createItem("Instant Noodle");
             loot.add(instantNoodle);
         }else if(num <= bread){
             Bread bread = (Bread)ItemFactory.createItem("Bread");
@@ -69,14 +78,19 @@ public class LootRoom {
         double num = rand.nextDouble();
         if (level == 1){
             if (num >= 0.50){
-                TornNotebook tornNotebook = (TornNotebook)ItemFactory.createItem("Torn Notebook");
+                TornNotebook tornNotebook =
+                        (TornNotebook)ItemFactory.createItem("Torn Notebook");
                 loot.add(tornNotebook);
             }else{
                 BurntPan burntPan = (BurntPan)ItemFactory.createItem("Burnt Pan");
                 loot.add(burntPan);
             }
         }else{
-            if (num >= 0.50){
+            if (num == 0.01) {
+                System.out.println("\n You see light reflecting from something shiny.\n");
+                RealKnife realKnife = (RealKnife) ItemFactory.createItem("Real Knife");
+                loot.add(realKnife);
+            }else if (num >= 0.50){
                 ToyKnife toyKnife = (ToyKnife) ItemFactory.createItem("Toy Knife");
                 loot.add(toyKnife);
             }else{
@@ -84,6 +98,11 @@ public class LootRoom {
                 loot.add(wornDagger);
             }
         }
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 
 }

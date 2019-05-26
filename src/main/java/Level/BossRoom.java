@@ -1,9 +1,11 @@
+package Level;
+
 import Entities.*;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class BossRoom {
+public class BossRoom extends Room {
     private static ArrayList<Entities> bosses = new ArrayList<Entities>();
 
     private final double animatedGolemSpawn = 0.33;
@@ -13,6 +15,10 @@ public class BossRoom {
     private final double giantRat = 0.99;
 
     private Random rand = new Random();
+
+    private static boolean isCleared = false;
+
+    private final String NAME = "Boss room";
 
     BossRoom(){
         spawnEnemy();
@@ -31,5 +37,10 @@ public class BossRoom {
             bosses.add(giantRat);
         }
 
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 }
