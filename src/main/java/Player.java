@@ -14,8 +14,6 @@ public class Player {
 
     private static ArrayList<Item> inventory = new ArrayList<Item>();
 
-    private static Weapon weapon;
-
     private static int[] position;
 
     private static int level;
@@ -36,17 +34,24 @@ public class Player {
 
     public void playerInfo(){
         System.out.println("Health : " + health);
-        System.out.println("Weapon : " + weapon.getName() + " ATK : " + weapon.getAttackValue());
     }
 
     public void inventoryInfo(){
         System.out.println("Inventory :\n");
         for (int i = 0; i < inventory.size(); i++){
-            System.out.println("\t"+inventory.get(i).getName());
+            System.out.print("\t"+inventory.get(i).getName());
+            if (inventory.get(i).equals(Consumable.class)){
+                Consumable consumable = (Consumable) inventory.get(i);
+                System.out.println(": restores" + consumable.getRestores() + " HP");
+            }else{
+                Weapon weapon = (Weapon) inventory.get(i);
+                System.out.println(": " + weapon.getAttackValue() + " ATK");
+            }
         }
     }
 
     public void useConsumable(Consumable consumable){
+        System.out.println("You used " + consumable.getName());
         health += consumable.getRestores();
         System.out.println("You are healed for : " + consumable.getRestores());
         inventory.remove(consumable);
@@ -57,7 +62,7 @@ public class Player {
     }
 
     public void setHealth(int health) {
-        Player.health = health;
+        this.health = health;
     }
 
     public int getMaxHealth() {
@@ -65,13 +70,13 @@ public class Player {
     }
 
     public void setMaxHealth(int maxHealth) {
-        Player.maxHealth = maxHealth;
+        this.maxHealth = maxHealth;
     }
 
     public void increaseExp(int exp) {
         this.exp += exp;
-        while(exp > level * 10){
-            exp -= level * 10;
+        while(this.exp > level * 10){
+            this.exp -= level * 10;
             level += 1;
         }
     }
@@ -81,15 +86,7 @@ public class Player {
     }
 
     public void setInventory(ArrayList<Item> inventory) {
-        Player.inventory = inventory;
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    public void setWeapon(Weapon weapon) {
-        Player.weapon = weapon;
+        this.inventory = inventory;
     }
 
     public int[] getPosition() {

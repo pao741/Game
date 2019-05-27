@@ -3,8 +3,10 @@ package Entities;
 public class Skeleton extends Entities {
     private static int health;
     private final int ATTACK = 25;
+    private static int maxHealth;
 
     Skeleton(){
+        maxHealth = 40;
         health = 40;
         isAlive = true;
     }
@@ -15,6 +17,9 @@ public class Skeleton extends Entities {
 
     public void setHealth(int health) {
         this.health = health;
+        if (this.health <= 0){
+            isAlive = false;
+        }
     }
 
     public int getHealth() {
@@ -23,5 +28,10 @@ public class Skeleton extends Entities {
 
     public int getATTACK() {
         return ATTACK;
+    }
+
+    @Override
+    public int getMaxHealth() {
+        return maxHealth;
     }
 }

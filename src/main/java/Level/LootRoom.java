@@ -24,12 +24,13 @@ public class LootRoom extends Room{
 
     private final String NAME = "Loot room";
 
-    private static boolean isCleared = false;
+    private static boolean isCleared;
 
 
     private Random rand = new Random();
 
     LootRoom(int level){
+        isCleared = false;
         if (level == 1){
             spawnItem(1);
         }else if(level == 2){
@@ -105,4 +106,26 @@ public class LootRoom extends Room{
         return NAME;
     }
 
+    @Override
+    public void getRoomInfo() {
+        if (!isCleared) {
+            System.out.print(NAME + ": \n\t");
+            System.out.print("There is");
+            for (int i = 0; i < loot.size(); i++) {
+                System.out.print(loot.get(i).getName() + " ");
+            }
+            System.out.println("on the ground.");
+        }else{
+            System.out.println("The room is cleared.");
+        }
+    }
+
+    public ArrayList<Item> takeItems(){
+        ArrayList<Item> temp = loot;
+        loot.clear();
+        return temp;
+    }
+    public boolean getRoomState(){
+        return isCleared;
+    }
 }

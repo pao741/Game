@@ -17,12 +17,15 @@ public class EnemyRoom extends Room{
 
     private final double theifSpawn = 0.25;
 
+    private static boolean isCleared;
+
     private final String NAME = "Enemy room";
 
 
     private Random rand = new Random();
 
     EnemyRoom(int level){
+        isCleared = false;
         if (level == 1){
             spawnEnemy();
         }else if(level == 2){
@@ -57,5 +60,24 @@ public class EnemyRoom extends Room{
     @Override
     public String getName() {
         return NAME;
+    }
+
+    @Override
+    public void getRoomInfo() {
+        if (!isCleared) {
+            System.out.print(NAME + ": \n\t");
+            System.out.print("You are seeing");
+            for (int i = 0; i < enemies.size(); i++) {
+                Entities entities = enemies.get(i);
+                entities.getInfo();
+            }
+            System.out.println("on the ground.");
+        }else{
+            System.out.println("The room is cleared.");
+        }
+
+    }
+    public boolean getRoomState(){
+        return isCleared;
     }
 }

@@ -3,13 +3,13 @@ import Level.*;
 
 import java.util.ArrayList;
 
-public class Tranverser {
+public class Traverser {
     private static Player player;
     private static Map currentLevel;
     private static int level;
 //    private ArrayList<Room> grid;
 
-    public Tranverser(){
+    public Traverser(){
         level = 1;
         currentLevel = new LevelOne();
         player = new Player();
@@ -64,14 +64,28 @@ public class Tranverser {
     public void printMap (){
         ArrayList<ArrayList<Room>> map = currentLevel.getMap();
         int[] playerPos = player.getPosition();
+        System.out.println("\n");
         for (int i = 0; i < 4; i++){
             System.out.println("\t");
             for (int j = 0; j < 4; j++){
-                System.out.print(map.get(i).get(j).getName() + " ");
+                if (i == playerPos[0] && j == playerPos[1]){
+                    System.out.println("Current room");
+                }else {
+                    map.get(i).get(j).getName();
+                }
+                map.get(i).get(j).roomState();
+                System.out.println("\t");
             }
             System.out.println();
         }
     }
+
+    void printCurrentRoomInfo(){
+        int[] pos = player.getPosition();
+        currentLevel.getMap().get(pos[0]).get(pos[1]).getRoomInfo();
+    }
+
+
 
 
 }

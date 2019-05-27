@@ -2,6 +2,6 @@ package Item.Consumable;
 
 import Item.Item;
 
-public interface Consumable extends Item {
-    public int getRestores();
+public abstract class Consumable extends Item {
+    public abstract int getRestores();
 }

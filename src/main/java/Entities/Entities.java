@@ -7,8 +7,9 @@ public abstract class Entities {
     public abstract void setHealth(int health);
     public abstract int getHealth();
     public abstract int getATTACK();
+    public abstract int getMaxHealth();
 
-    public void getDamage(int damage){
+    public void takeDamage(int damage){
         setHealth(getHealth() - damage);
     }
 
@@ -18,6 +19,10 @@ public abstract class Entities {
 
     public void introduce(){
         System.out.println("You see a " + getName() + " fast approach.");
+    }
+
+    public void getInfo(){
+        System.out.println(getName() + ": " + getHealth() + "/" + getMaxHealth());
     }
 
 }

@@ -16,7 +16,7 @@ public class BossRoom extends Room {
 
     private Random rand = new Random();
 
-    private static boolean isCleared = false;
+    private static boolean isCleared;
 
     private final String NAME = "Boss room";
 
@@ -25,6 +25,7 @@ public class BossRoom extends Room {
     }
 
     public void spawnEnemy(){
+        isCleared = false;
         double num = rand.nextDouble();
         if (num <= animatedGolemSpawn){
             Entities animatedGolem = EntitiesFactory.createEntities("Animated Golem");
@@ -42,5 +43,15 @@ public class BossRoom extends Room {
     @Override
     public String getName() {
         return NAME;
+    }
+
+    public void getRoomInfo(){
+        for (int i = 0; i < bosses.size(); i++){
+            Entities boss = bosses.get(i);
+            boss.getInfo();
+        }
+    }
+    public boolean getRoomState(){
+        return isCleared;
     }
 }

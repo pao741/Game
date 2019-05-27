@@ -9,18 +9,20 @@ public class Game {
     public static boolean figthing;
     private Scanner scanner;
     private String userInput;
+    private Command command;
 
     Game(){
         scanner = new Scanner(System.in);
         userInput = "";
+        command = new Command();
     }
 
     public void run(){
         Player player = new Player();
 //        InputStream command = System.in;
-        String command = scanner.nextLine();
-        String[] userArgs = command.split(" ");
         while(true){
+            String command = scanner.nextLine();
+            String[] userArgs = command.split(" ");
             if (command.equals("quit")){
                 break;
             }else if (command.equals("help")){
@@ -37,12 +39,11 @@ public class Game {
             }else if (command.equals("drop")) {
 
             }else if (command.equals("Roses are red, where is my wife")){
-                System.out.println("IDK why but here is your precious knife");
+                System.out.println("I don't know why but here is your precious knife");
                 player.give(ItemFactory.createItem("Real Knife"));
             }else{
                 System.out.println("Type \'help\' for list of command");
             }
-            command = scanner.nextLine();
         }
         System.out.println("Quiting the game...");
     }

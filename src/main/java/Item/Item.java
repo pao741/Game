@@ -1,6 +1,9 @@
 package Item;
 
-public interface Item {
+import Item.Consumable.Consumable;
 
-    public String getName();
+public abstract class Item {
+
+    public abstract String getName();
+
 }

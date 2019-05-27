@@ -8,6 +8,7 @@ public class LevelOne extends Map{
     private static ArrayList<ArrayList<Room>> map;
 
     public LevelOne(){
+        map = new ArrayList<>();
         createMap();
     }
 
@@ -18,8 +19,10 @@ public class LevelOne extends Map{
 
     public void createMap(){
         for (int i = 0; i < 4; i++){
+            ArrayList<Room> x = new ArrayList<>();
+            map.add(x);
             for (int j = 0; j < 4; j++){
-                int[] pos = new int[]{i,j};
+//                int[] pos = new int[]{i,j};
                 if (blueprint[i][j] == 1){
                     EnemyRoom enemyRoom = new EnemyRoom(1);
                     map.get(i).add(enemyRoom);

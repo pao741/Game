@@ -2,6 +2,6 @@ package Item.Weapon;
 
 import Item.Item;
 
-public interface Weapon extends Item {
-    public int getAttackValue();
+public abstract class Weapon extends Item {
+    public abstract int getAttackValue();
 }
