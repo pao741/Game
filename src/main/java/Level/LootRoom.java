@@ -120,12 +120,19 @@ public class LootRoom extends Room{
         }
     }
 
-    public ArrayList<Item> takeItems(){
-        ArrayList<Item> temp = loot;
-        loot.clear();
-        return temp;
+    public Item takeItems(String item){
+        Item i = ItemFactory.createItem(item);
+        loot.remove(i);
+        return i;
     }
     public boolean getRoomState(){
         return isCleared;
+    }
+
+    public ArrayList<Item> getLoot(){
+        return loot;
+    }
+    public void setLoot(ArrayList<Item> loot){
+        this.loot = loot;
     }
 }

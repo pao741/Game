@@ -46,12 +46,24 @@ public class BossRoom extends Room {
     }
 
     public void getRoomInfo(){
-        for (int i = 0; i < bosses.size(); i++){
-            Entities boss = bosses.get(i);
-            boss.getInfo();
+        if (isCleared){
+            for (int i = 0; i < bosses.size(); i++) {
+                Entities boss = bosses.get(i);
+                boss.getInfo();
+            }
+        }else{
+            System.out.println("The room is cleared");
         }
     }
     public boolean getRoomState(){
         return isCleared;
+    }
+
+    public ArrayList<Entities> getBosses() {
+        return bosses;
+    }
+
+    public void setBosses(ArrayList<Entities> bosses) {
+        this.bosses = bosses;
     }
 }

@@ -62,6 +62,14 @@ public class EnemyRoom extends Room{
         return NAME;
     }
 
+    public ArrayList<Entities> getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(ArrayList<Entities> enemies) {
+        EnemyRoom.enemies = enemies;
+    }
+
     @Override
     public void getRoomInfo() {
         if (!isCleared) {

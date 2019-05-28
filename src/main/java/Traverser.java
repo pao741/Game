@@ -1,6 +1,9 @@
-import Item.Item;
+import Entities.*;
+import Item.*;
+import Item.Weapon.Weapon;
 import Level.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Traverser {
@@ -42,22 +45,48 @@ public class Traverser {
         }
     }
 
-    void info(){
+    void info(String[] arg){
         int[] playerPos = player.getPosition();
-        currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).getRoomInfo();
+        String command = arg[0];
+        if (command.equals("room")) {
+            currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).getRoomInfo();
+        }else if (command.equals("player")){
+            player.printPlayerInfo();
+        }else if (command.equals("inventory")){
+            player.inventoryInfo();
+        }else{
+            System.out.println("Which info do you want to see?");
+            System.out.println("Options: \'room\' \'player\' \'inventory\' ");
+        }
     }
 
-    void take(String arg){
+    void take(String[] arg){
+        String taking = arg[0];
+        boolean taken = false;
         int[] playerPos = player.getPosition();
         if (currentLevel.getMap().get(playerPos[0]).get(playerPos[1]) instanceof LootRoom) {
             currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).setRoomClear();
             ArrayList<Item> loot = ((LootRoom) currentLevel.getMap().
-                    get(playerPos[0]).get(playerPos[1])).takeItems();
+                    get(playerPos[0]).get(playerPos[1])).getLoot();
             for (Item item : loot) {
-                player.give(item);
+                if (taking.equals(item.getName())) {
+                    Item giving = ((LootRoom) currentLevel.getMap().get(playerPos[0])
+                            .get(playerPos[1])).takeItems(item.getName());
+                    loot.remove(giving);
+                    player.give(giving);
+                    ((LootRoom) currentLevel.getMap()
+                            .get(playerPos[0]).get(playerPos[1])).setLoot(loot);
+                    if (loot.isEmpty()){
+                        currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).setRoomClear();
+                    }
+                    taken = true;
+                }
+            }
+            if (!taken){
+                System.out.println("There is no " + taking + " lying around");
             }
         } else {
-            System.out.println("\tThis is now a loot room. There is nothing to take");
+            System.out.println("\tThis is not a loot room. There is nothing to take");
         }
     }
 
@@ -83,6 +112,34 @@ public class Traverser {
     void printCurrentRoomInfo(){
         int[] pos = player.getPosition();
         currentLevel.getMap().get(pos[0]).get(pos[1]).getRoomInfo();
+    }
+
+    void attack(String[] arg){
+        int[] pos = player.getPosition();
+        String enemy = arg[0];
+        Weapon weapon;
+        try {
+            weapon = (Weapon) ItemFactory.createItem(arg[1]);
+        }catch(Exception e){
+            System.out.println(arg[1] + " is not a weapon");
+            return;
+        }
+        if (currentLevel.getMap().get(pos[0]).get(pos[1]) instanceof EnemyRoom){
+            if (currentLevel.getMap().get(pos[0]).get(pos[1]) instanceof BossRoom){
+                BossRoom currentRoom = (BossRoom)currentLevel.getMap().get(pos[0]).get(pos[1]);
+                ArrayList<Entities> bosses = currentRoom.getBosses();
+                if (bosses.contains(EntitiesFactory.createEntities(enemy))){
+                    Entities target = bosses.get(bosses.indexOf(EntitiesFactory.createEntities(enemy)));
+                    target.setHealth(target.getHealth() - weapon.getAttackValue());
+                }
+            }else{
+                EnemyRoom currentRoom = (EnemyRoom)currentLevel.getMap().get(pos[0]).get(pos[1]);
+                ArrayList<Entities> enemies = currentRoom.getEnemies();
+            }
+
+        }else{
+            System.out.println("There is no enemy to fight");
+        }
     }
 
 

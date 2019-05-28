@@ -101,4 +101,21 @@ public class Player {
         inventory.add(item);
         System.out.println("You got a " + item.getName());
     }
+
+    public void printPlayerInfo(){
+        System.out.println("Player: " + getHealth() + "/" + getHealth() + "HP");
+    }
+
+    public void printInventory(){
+        System.out.println("Inventory: ");
+        for (Item item: inventory){
+            if (item.getClass().equals(Consumable.class)){
+                Consumable consumable = (Consumable)item;
+                System.out.println("\t" + consumable.getName() + ": +" + consumable.getRestores() + " HP");
+            }else {
+                Weapon weapon = (Weapon)item;
+                System.out.println("\t" + weapon.getName() + ": " + weapon.getAttackValue() + " ATK");
+            }
+        }
+    }
 }

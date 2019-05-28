@@ -8,10 +8,10 @@ public class Command {
         player = new Player();
     }
 
-    public boolean doCommand(String command, String[] arhs){
+    public boolean doCommand(String command, String[] args){
         switch (command){
             case "info":
-                traverser.info();
+                traverser.info(args);
             case "quit":
                 return true;
             case "help":

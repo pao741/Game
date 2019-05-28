@@ -22,7 +22,7 @@ public class Game {
 //        InputStream command = System.in;
         while(true){
             String command = scanner.nextLine();
-            String[] userArgs = command.split(" ");
+            String[] userArgs = command.split(" ",2);
             if (command.equals("quit")){
                 break;
             }else if (command.equals("help")){
