@@ -1,12 +1,21 @@
 package Item.Weapon;
 
-public class ToyKnife implements Weapon {
-    public final int ATTACK = 40;
-    private String name = "Toy knife";
+public class ToyKnife extends Weapon {
+    public static int attack;
+    private String name ;
+
+    public ToyKnife(){
+        attack = 40;
+        name = "Toy knife";
+    }
+    @Override
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 
     @Override
     public int getAttackValue() {
-        return ATTACK;
+        return attack;
     }
 
     @Override

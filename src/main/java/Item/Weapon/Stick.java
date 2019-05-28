@@ -1,13 +1,20 @@
 package Item.Weapon;
 
-public class Stick implements Weapon{
-    public final int ATTACK = 10;
-    private String name = "Stick";
+public class Stick extends Weapon{
+    public static int attack;
+    private String name;
 
-
+    public Stick(){
+        attack = 10;
+        name = "Stick";
+    }
+    @Override
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
     @Override
     public int getAttackValue() {
-        return ATTACK;
+        return attack;
     }
 
 

@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class EnemyRoom extends Room{
 
-    private static ArrayList<Entities> enemies = new ArrayList<Entities>();
+    private static ArrayList<Entities> enemies;
 
     private final double ratSpawn = 0.99;
 
@@ -25,6 +25,7 @@ public class EnemyRoom extends Room{
     private Random rand = new Random();
 
     EnemyRoom(int level){
+        enemies = new ArrayList<Entities>();
         isCleared = false;
         if (level == 1){
             spawnEnemy();
@@ -74,12 +75,12 @@ public class EnemyRoom extends Room{
     public void getRoomInfo() {
         if (!isCleared) {
             System.out.print(NAME + ": \n\t");
-            System.out.print("You are seeing");
+            System.out.print("You are seeing ");
             for (int i = 0; i < enemies.size(); i++) {
-                Entities entities = enemies.get(i);
-                entities.getInfo();
+//                System.out.println(enemies.size());
+                Entities entity = enemies.get(i);
+                entity.getInfo();
             }
-            System.out.println("on the ground.");
         }else{
             System.out.println("The room is cleared.");
         }
@@ -87,5 +88,21 @@ public class EnemyRoom extends Room{
     }
     public boolean getRoomState(){
         return isCleared;
+    }
+
+    @Override
+    public void checkIfCleared() {
+        for (int i = 0; i < enemies.size(); i++){
+            if (!enemies.get(i).isAlive){
+                enemies.remove(enemies.get(i));
+            }
+        }
+        if (enemies.size() == 0){
+            setIsCleared();
+        }
+    }
+    @Override
+    public void setIsCleared() {
+        isCleared = true;
     }
 }

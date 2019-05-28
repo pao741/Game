@@ -10,7 +10,6 @@ public class LevelThree extends Map{
         createMap();
     }
 
-    @Override
     public ArrayList<ArrayList<Room>> getMap() {
         return map;
     }

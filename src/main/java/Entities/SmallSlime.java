@@ -11,7 +11,7 @@ public class SmallSlime extends Entities{
         isAlive = true;
     }
     public String getName() {
-        return "SmallSlime";
+        return "Small Slime";
     }
 
     public void setHealth(int health) {

@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class LootRoom extends Room{
 
-    private static ArrayList<Item> loot = new ArrayList<Item>();
+    private static ArrayList<Item> loot;
 
     private final double bandage = 0.99;
 
@@ -30,6 +30,7 @@ public class LootRoom extends Room{
     private Random rand = new Random();
 
     LootRoom(int level){
+        loot = new ArrayList<Item>();
         isCleared = false;
         if (level == 1){
             spawnItem(1);
@@ -48,7 +49,7 @@ public class LootRoom extends Room{
         double num = rand.nextDouble();
         if (num <= legendarySoda){
             LegendarySoda legendarySoda =
-                    (LegendarySoda) ItemFactory.createItem("Legendary Soda");
+                    (LegendarySoda)ItemFactory.createItem("Legendary Soda");
             loot.add(legendarySoda);
         }else if(num <= burger){
             Burger burger = (Burger)ItemFactory.createItem("Burger");
@@ -110,7 +111,7 @@ public class LootRoom extends Room{
     public void getRoomInfo() {
         if (!isCleared) {
             System.out.print(NAME + ": \n\t");
-            System.out.print("There is");
+            System.out.print("There is ");
             for (int i = 0; i < loot.size(); i++) {
                 System.out.print(loot.get(i).getName() + " ");
             }
@@ -135,4 +136,18 @@ public class LootRoom extends Room{
     public void setLoot(ArrayList<Item> loot){
         this.loot = loot;
     }
+
+    @Override
+    public void checkIfCleared() {
+        if (loot.size() == 0){
+            setIsCleared();
+        }
+    }
+
+    @Override
+    public void setIsCleared() {
+        isCleared = true;
+    }
+
+
 }

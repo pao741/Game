@@ -1,9 +1,17 @@
 package Item.Weapon;
 
-public class BurntPan implements Weapon{
-    public final double RARITY = 0.40;
-    public final int ATTACK = 50;
-    private String name = "Burnt pan";
+public class BurntPan extends Weapon{
+    public static int attack;
+    private String name ;
+
+    public BurntPan(){
+        attack= 50;
+        name= "Burnt pan";
+    }
+    @Override
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 
     @Override
     public String getName() {
@@ -12,7 +20,7 @@ public class BurntPan implements Weapon{
 
     @Override
     public int getAttackValue() {
-        return ATTACK;
+        return attack;
     }
 
 }

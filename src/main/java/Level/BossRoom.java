@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BossRoom extends Room {
-    private static ArrayList<Entities> bosses = new ArrayList<Entities>();
+    private static ArrayList<Entities> bosses;
 
     private final double animatedGolemSpawn = 0.33;
 
@@ -21,6 +21,7 @@ public class BossRoom extends Room {
     private final String NAME = "Boss room";
 
     BossRoom(){
+        bosses = new ArrayList<Entities>();
         spawnEnemy();
     }
 
@@ -46,7 +47,9 @@ public class BossRoom extends Room {
     }
 
     public void getRoomInfo(){
-        if (isCleared){
+        if (!isCleared){
+            System.out.print(NAME + ": \n\t");
+            System.out.print("You are seeing ");
             for (int i = 0; i < bosses.size(); i++) {
                 Entities boss = bosses.get(i);
                 boss.getInfo();
@@ -65,5 +68,16 @@ public class BossRoom extends Room {
 
     public void setBosses(ArrayList<Entities> bosses) {
         this.bosses = bosses;
+    }
+
+    @Override
+    public void checkIfCleared() {
+        if (bosses.size() == 0){
+            setIsCleared();
+        }
+    }
+    @Override
+    public void setIsCleared() {
+        isCleared = true;
     }
 }

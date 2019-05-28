@@ -1,7 +1,7 @@
 package Item.Consumable;
 
 
-public class LegendarySoda implements Consumable{
+public class LegendarySoda extends Consumable{
     private final double RARITY = 0.01;
     private final int RESTORES = Integer.MAX_VALUE;
     private final String NAME = "Legendary Soda";

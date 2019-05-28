@@ -2,7 +2,7 @@ package Item.Consumable;
 
 import java.util.Random;
 
-public class InstantNoodle implements Consumable{
+public class InstantNoodle extends Consumable{
     public int restores;
     private final String NAME = "Instant noodle";
     public Random rand = new Random();

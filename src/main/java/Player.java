@@ -8,17 +8,20 @@ public class Player {
 
     private static int health;
 
-    private static int maxHealth = 20;
+    private static int maxHealth;
 
-    private static int exp = 0;
+    private static int exp;
 
-    private static ArrayList<Item> inventory = new ArrayList<Item>();
+    private static ArrayList<Item> inventory;
 
     private static int[] position;
 
     private static int level;
 
     Player(){
+        exp = 0;
+        maxHealth = 20;
+        inventory = new ArrayList<Item>();
         level = 1;
         position = new int[]{2,0};
         health = 20;
@@ -33,16 +36,16 @@ public class Player {
     }
 
     public void playerInfo(){
-        System.out.println("Health : " + health);
+        System.out.println("Player Health : " + health +"/"+maxHealth + "HP");
     }
 
     public void inventoryInfo(){
         System.out.println("Inventory :\n");
         for (int i = 0; i < inventory.size(); i++){
             System.out.print("\t"+inventory.get(i).getName());
-            if (inventory.get(i).equals(Consumable.class)){
+            if (inventory.get(i)instanceof Consumable){
                 Consumable consumable = (Consumable) inventory.get(i);
-                System.out.println(": restores" + consumable.getRestores() + " HP");
+                System.out.println(": restores " + consumable.getRestores() + " HP");
             }else{
                 Weapon weapon = (Weapon) inventory.get(i);
                 System.out.println(": " + weapon.getAttackValue() + " ATK");
@@ -106,16 +109,20 @@ public class Player {
         System.out.println("Player: " + getHealth() + "/" + getHealth() + "HP");
     }
 
-    public void printInventory(){
-        System.out.println("Inventory: ");
-        for (Item item: inventory){
-            if (item.getClass().equals(Consumable.class)){
-                Consumable consumable = (Consumable)item;
-                System.out.println("\t" + consumable.getName() + ": +" + consumable.getRestores() + " HP");
-            }else {
-                Weapon weapon = (Weapon)item;
-                System.out.println("\t" + weapon.getName() + ": " + weapon.getAttackValue() + " ATK");
+    public Weapon getWeapon(Weapon weapon){
+        for (int i = 0; i < inventory.size();i++){
+            if (inventory.get(i) instanceof Weapon){
+                return (Weapon)inventory.get(i);
             }
         }
+        return null;
+    }
+    public boolean have(Item item){
+        for (int i = 0; i < inventory.size(); i++){
+            if (inventory.get(i).getName().equals(item.getName())){
+                return true;
+            }
+        }
+        return false;
     }
 }

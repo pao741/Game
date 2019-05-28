@@ -28,7 +28,6 @@ public class LevelTwo extends Map{
         }
     }
 
-    @Override
     public ArrayList<ArrayList<Room>> getMap() {
         return map;
     }

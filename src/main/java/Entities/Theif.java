@@ -8,6 +8,7 @@ public class Theif extends Entities {
     Theif(){
 
         health = 20;
+        maxHealth = 20;
         isAlive = true;
     }
 

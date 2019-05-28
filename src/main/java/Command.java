@@ -1,3 +1,9 @@
+import Item.Item;
+import Item.ItemFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Command {
 
     Traverser traverser;
@@ -10,23 +16,44 @@ public class Command {
 
     public boolean doCommand(String command, String[] args){
         switch (command){
+            case "take":
+                traverser.take(args);
+                return false;
             case "info":
                 traverser.info(args);
+                return false;
             case "quit":
                 return true;
             case "help":
                 printHelp();
+                return false;
             case "drop":
-
+                traverser.drop(args);
+                return false;
+            case "Roses":
+                if (args[0].equals("are red, where is my wife?")){
+                    System.out.println("I don't know why but here is your precious knife");
+                    player.give(ItemFactory.createItem("Real Knife"));
+                    return false;
+                }
+            case "move":
+                traverser.move(args);
+                return false;
+            case "attack":
+                traverser.attack(args);
+                return false;
+            case "clear":
+                traverser.clearRoom();
+                return false;
             default:
                 System.out.println("Type \'help\' for list of command");
+                return false;
         }
-        return false;
     }
 
-    void move(String direction){
-        traverser.move(direction);
-    }
+//    void move(String direction){
+//        traverser.move(direction);
+//    }
 
     void printHelp(){
         System.out.println("help – print all commands\n"+
@@ -40,6 +67,7 @@ public class Command {
                 "east - move to the east\n" +
                 "west - move to the west\n");
     }
+
 
 
 }

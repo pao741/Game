@@ -2,48 +2,37 @@ import Item.ItemFactory;
 
 import javax.xml.bind.SchemaOutputResolver;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
 
     public static boolean figthing;
     private Scanner scanner;
-    private String userInput;
     private Command command;
 
     Game(){
         scanner = new Scanner(System.in);
-        userInput = "";
         command = new Command();
     }
 
-    public void run(){
+    public void run() {
         Player player = new Player();
 //        InputStream command = System.in;
-        while(true){
-            String command = scanner.nextLine();
-            String[] userArgs = command.split(" ",2);
-            if (command.equals("quit")){
-                break;
-            }else if (command.equals("help")){
-                printHelp();
-            }else if (command.equals("attack")){
-                if (!figthing){
-                    System.out.println("There is no enemy around to attack");
-                }else{
-                    System.out.println("you fight");
-                }
+        boolean quit = false;
+        printStartingMessage();
+        String userInput;
+        while (!quit) {
+            userInput = scanner.nextLine();
+            String[] x = userInput.split(" ", 2);
+            String input = x[0];
+            String[] userArgs = Arrays.copyOfRange(x, 1, x.length);
+//            if (input.equals("Roses are red, where is my wife")) {
+//                System.out.println("I don't know why but here is your precious knife");
+//                player.give(ItemFactory.createItem("Real Knife"));
+//            }
+            quit = command.doCommand(input, userArgs);
 
-            }else if (command.equals("take")){
-
-            }else if (command.equals("drop")) {
-
-            }else if (command.equals("Roses are red, where is my wife")){
-                System.out.println("I don't know why but here is your precious knife");
-                player.give(ItemFactory.createItem("Real Knife"));
-            }else{
-                System.out.println("Type \'help\' for list of command");
-            }
         }
         System.out.println("Quiting the game...");
     }

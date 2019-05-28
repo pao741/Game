@@ -1,14 +1,21 @@
 package Item.Weapon;
 
-public class RealKnife implements Weapon{
-    public final int ATTACK = Integer.MAX_VALUE;
-    private String name = "Real knife";
+public class RealKnife extends Weapon{
+    public static int attack;
+    private String name;
+
+    public RealKnife(){
+        attack = 99999;
+        name = "Real knife";
+    }
+    @Override
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 
     @Override
     public int getAttackValue() {
-        System.out.println("This is not for children");
-        return ATTACK;
-
+        return attack;
     }
 
     @Override

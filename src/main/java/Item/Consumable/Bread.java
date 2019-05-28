@@ -1,6 +1,6 @@
 package Item.Consumable;
 
-public class Bread implements Consumable{
+public class Bread extends Consumable{
     public final int RESTORES = 25;
     private final String NAME = "Bread";
 

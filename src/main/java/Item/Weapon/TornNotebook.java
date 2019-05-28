@@ -1,13 +1,21 @@
 package Item.Weapon;
 
-public class TornNotebook implements Weapon{
-    public final double RARITY = 0.75;
-    public final int ATTACK = 15;
-    private String name = "Torn notebook";
+public class TornNotebook extends Weapon{
+    public static int attack;
+    private String name ;
+
+    public TornNotebook(){
+        attack = 15;
+        name = "Torn notebook";
+    }
+    @Override
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
 
     @Override
     public int getAttackValue() {
-        return ATTACK;
+        return attack;
     }
 
 
