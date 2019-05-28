@@ -1,8 +1,10 @@
 import Entities.*;
 import Item.*;
+import Item.Consumable.Consumable;
 import Item.Weapon.Weapon;
 import Level.*;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -22,37 +24,51 @@ public class Traverser {
     public void move(String[] arg){
         String direction = arg[0];
         int[] newPos = player.getPosition();
-        try {
             if (direction.equals("north")) {
-                newPos[0] -= 1;
-                currentLevel.getMap().get(newPos[0]).get(newPos[1]);
-                player.setPosition(newPos);
-                System.out.println("You decided to go north");
+                try {
+                    currentLevel.getMap().get(newPos[0]-1).get(newPos[1]);
+                    System.out.println("You decided to go north");
+                    newPos[0] -= 1;
+                    player.setPosition(newPos);
+                }catch (IndexOutOfBoundsException e){
+                    System.out.println("Invalid move: You can't go there");
+                }
             } else if (direction.equals("south")) {
-                newPos[0] += 1;
-                currentLevel.getMap().get(newPos[0]).get(newPos[1]);
-                player.setPosition(newPos);
-                System.out.println("You decided to go south");
+                try{
+                    currentLevel.getMap().get(newPos[0]+1).get(newPos[1]);
+                    System.out.println("You decided to go south");
+                    newPos[0] += 1;
+                    player.setPosition(newPos);
+                }catch (IndexOutOfBoundsException e){
+                    System.out.println("Invalid move: You can't go there");
+                }
             } else if (direction.equals("east")) {
-                newPos[1] += 1;
-                currentLevel.getMap().get(newPos[0]).get(newPos[1]);
-                player.setPosition(newPos);
-                System.out.println("You decided to go east");
+                try{
+                    currentLevel.getMap().get(newPos[0]).get(newPos[1]+1);
+                    System.out.println("You decided to go east");
+                    newPos[1] += 1;
+                    player.setPosition(newPos);
+                }catch (IndexOutOfBoundsException e){
+                    System.out.println("Invalid move: You can't go there");
+                }
+
+
             } else if (direction.equals("west")) {
-                newPos[1] -= 1;
-                currentLevel.getMap().get(newPos[0]).get(newPos[1]);
-                player.setPosition(newPos);
-                System.out.println("You decided to go west");
+                try{
+                    currentLevel.getMap().get(newPos[0]).get(newPos[1]-1);
+                    System.out.println("You decided to go west");
+                    newPos[1] -= 1;
+                    player.setPosition(newPos);
+                }catch (IndexOutOfBoundsException e){
+                    System.out.println("Invalid move: You can't go there");
+                }
+
             } else{
                 System.out.println("Direction choices: north/south/east/west");
             }
-        }catch (IndexOutOfBoundsException e){
-            System.out.println("Invalid move: You can't go there");
-        }
     }
 
     void info(String[] arg){
-        int[] playerPos = player.getPosition();
         if (arg.length == 0){
             System.out.println("Which info do you want to see?");
             System.out.println("Options: \'room\' \'player\' \'inventory\' ");
@@ -60,9 +76,10 @@ public class Traverser {
         }
         String command = arg[0];
         if (command.equals("room")) {
-            currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).getRoomInfo();
+            printCurrentRoomInfo();
         }else if (command.equals("player")){
             player.printPlayerInfo();
+            System.out.println("player pos: " + player.getPosition()[0] + ", " +player.getPosition()[1]);
         }else if (command.equals("inventory")) {
             player.inventoryInfo();
         }else if (command.equals("map")){
@@ -216,7 +233,29 @@ public class Traverser {
         currentLevel.getMap().get(pos[0]).get(pos[1]).getRoomInfo();
     }
 
-
+    void use(String[] arg){
+        Consumable consumable;
+        try {
+            consumable = (Consumable)ItemFactory.createItem(arg[0]);
+        }catch (Exception e){
+            System.out.println(arg[0] + " is not a consumable item");
+            return;
+        }
+        if (player.have(consumable)){
+            player.setHealth(player.getHealth() + consumable.getRestores());
+            ArrayList<Item> newInventory = player.getInventory();
+            for (int i = 0; i < newInventory.size(); i++){
+                if (newInventory.get(i).getName().equals(consumable.getName())){
+                    newInventory.remove(i);
+                    break;
+                }
+            }
+            player.setInventory(newInventory);
+            System.out.println(consumable.getName() + " is used");
+        }else{
+            System.out.println("You dont have " + arg[0]);
+        }
+    }
 
 
 }

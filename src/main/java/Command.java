@@ -45,6 +45,10 @@ public class Command {
             case "clear":
                 traverser.clearRoom();
                 return false;
+            case "use":
+                traverser.use(args);
+                return false;
+
             default:
                 System.out.println("Type \'help\' for list of command");
                 return false;
