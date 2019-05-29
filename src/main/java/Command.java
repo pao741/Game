@@ -17,7 +17,7 @@ public class Command {
     public boolean doCommand(String command, String[] args){
         switch (command){
             case "take":
-                traverser.take(args);
+                traverser.take();
                 return false;
             case "info":
                 traverser.info(args);

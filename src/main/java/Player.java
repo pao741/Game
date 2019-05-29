@@ -18,11 +18,11 @@ public class Player {
     private static int level;
 
     Player(){
-        maxHealth = 60;
+        maxHealth = 100;
         inventory = new ArrayList<Item>();
         level = 1;
         position = new int[]{2,0};
-        health = 60;
+        health = 100;
         inventory.add(ItemFactory.createItem("Stick"));
         inventory.add(ItemFactory.createItem("Bandage"));
         inventory.add(ItemFactory.createItem("Bandage"));
@@ -117,8 +117,20 @@ public class Player {
             if (weapon.getName().equals(inventory.get(i).getName())){
                 weapon = (Weapon) inventory.get(i);
                 weapon.setAttack((int)(weapon.getAttackValue() * 1.1));
+                return;
             }
         }
+        give(weapon);
 
+    }
+    public void take(Consumable consumable){
+        give(consumable);
+    }
+    void drop(Item item){
+        for (int i = 0; i < inventory.size(); i++){
+            if (item.getName().equals(inventory.get(i).getName())){
+                inventory.remove(i);
+            }
+        }
     }
 }

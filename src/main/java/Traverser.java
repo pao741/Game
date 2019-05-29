@@ -90,31 +90,38 @@ public class Traverser {
         }
     }
 
-    void take(String[] arg){
-        String taking = arg[0];
-        boolean taken = false;
+    void take(){
         int[] playerPos = player.getPosition();
         if (currentLevel.getMap().get(playerPos[0]).get(playerPos[1]) instanceof LootRoom) {
-            currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).setIsCleared();
-            ArrayList<Item> loot = ((LootRoom) currentLevel.getMap().
-                    get(playerPos[0]).get(playerPos[1])).getLoot();
-            for (Item item : loot) {
-                if (taking.equals(item.getName())) {
-                    Item giving = ((LootRoom) currentLevel.getMap().get(playerPos[0])
-                            .get(playerPos[1])).takeItems(item.getName());
-                    loot.remove(giving);
-                    player.give(giving);
-                    ((LootRoom) currentLevel.getMap()
-                            .get(playerPos[0]).get(playerPos[1])).setLoot(loot);
-                    if (loot.isEmpty()){
-                        currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).setIsCleared();
-                    }
-                    taken = true;
+            ArrayList<Item> items = ((LootRoom) currentLevel.getMap().get(playerPos[0]).get(playerPos[1])).getLoot();
+            for (Item item: items){
+                if (item instanceof Weapon){
+                    player.take((Weapon) item);
+                }else{
+                    player.take((Consumable) item);
                 }
             }
-            if (!taken){
-                System.out.println("There is no " + taking + " lying around");
-            }
+
+//            currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).setIsCleared();
+//            ArrayList<Item> loot = ((LootRoom) currentLevel.getMap().
+//                    get(playerPos[0]).get(playerPos[1])).getLoot();
+//            for (Item item : loot) {
+//                if (taking.equals(item.getName())) {
+//                    Item giving = ((LootRoom) currentLevel.getMap().get(playerPos[0])
+//                            .get(playerPos[1])).takeItems(item.getName());
+//                    loot.remove(giving);
+//                    player.give(giving);
+//                    ((LootRoom) currentLevel.getMap()
+//                            .get(playerPos[0]).get(playerPos[1])).setLoot(loot);
+//                    if (loot.isEmpty()){
+//                        currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).setIsCleared();
+//                    }
+//                    taken = true;
+//                }
+//            }
+//            if (!taken){
+//                System.out.println("There is no " + taking + " lying around");
+//            }
         } else {
             System.out.println("\tThis is not a loot room. There is nothing to take");
         }
@@ -212,19 +219,9 @@ public class Traverser {
 
     void drop(String[] arg){
         String droppingName = arg[0];
-        Item droppingItem;
-        try {
-            droppingItem = ItemFactory.createItem(droppingName);
-            ArrayList<Item> inventory = player.getInventory();
-            if (inventory.contains(droppingItem)){
-                inventory.remove(droppingItem);
-                player.setInventory(inventory);
-            }else {
-                System.out.println("You don't have " + droppingName);
-            }
-        }catch (Exception e){
-            System.out.println(droppingName + "is not a item");
-        }
+        Item droppingItem = ItemFactory.createItem(droppingName);
+        player.drop(droppingItem);
+        System.out.println("You drop a " + droppingName);
     }
 
     void clearRoom(){
@@ -256,6 +253,7 @@ public class Traverser {
             System.out.println("You dont have " + arg[0]);
         }
     }
+
 
 
 }
