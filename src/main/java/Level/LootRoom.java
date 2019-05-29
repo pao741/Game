@@ -149,5 +149,4 @@ public class LootRoom extends Room{
         isCleared = true;
     }
 
-
 }

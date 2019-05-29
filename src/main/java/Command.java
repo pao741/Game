@@ -15,6 +15,9 @@ public class Command {
     }
 
     public boolean doCommand(String command, String[] args){
+        if (!traverser.nextLevel()){
+            return true;
+        }
         switch (command){
             case "take":
                 traverser.take();
@@ -48,7 +51,9 @@ public class Command {
             case "use":
                 traverser.use(args);
                 return false;
-
+            case "clearAll":
+                traverser.clearAll();
+                return false;
             default:
                 System.out.println("Type \'help\' for list of command");
                 return false;

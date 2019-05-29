@@ -13,8 +13,15 @@ public abstract class Map {
                 }
             }
         }
-        System.out.println("The floor is clear!");
+        System.out.println("The level is clear");
         return true;
     }
 
+    public void clearAll(){
+        for (int i = 0; i < 4; i++){
+            for (int j = 0; j < 4; j++){
+                getMap().get(i).get(j).setIsCleared();
+                }
+            }
+        }
 }

@@ -83,6 +83,7 @@ public class Traverser {
         }else if (command.equals("inventory")) {
             player.inventoryInfo();
         }else if (command.equals("map")){
+            System.out.println("Level: " + level);
             printMap();
         }else{
             System.out.println("Which info do you want to see?");
@@ -101,27 +102,6 @@ public class Traverser {
                     player.take((Consumable) item);
                 }
             }
-
-//            currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).setIsCleared();
-//            ArrayList<Item> loot = ((LootRoom) currentLevel.getMap().
-//                    get(playerPos[0]).get(playerPos[1])).getLoot();
-//            for (Item item : loot) {
-//                if (taking.equals(item.getName())) {
-//                    Item giving = ((LootRoom) currentLevel.getMap().get(playerPos[0])
-//                            .get(playerPos[1])).takeItems(item.getName());
-//                    loot.remove(giving);
-//                    player.give(giving);
-//                    ((LootRoom) currentLevel.getMap()
-//                            .get(playerPos[0]).get(playerPos[1])).setLoot(loot);
-//                    if (loot.isEmpty()){
-//                        currentLevel.getMap().get(playerPos[0]).get(playerPos[1]).setIsCleared();
-//                    }
-//                    taken = true;
-//                }
-//            }
-//            if (!taken){
-//                System.out.println("There is no " + taking + " lying around");
-//            }
         } else {
             System.out.println("\tThis is not a loot room. There is nothing to take");
         }
@@ -253,6 +233,30 @@ public class Traverser {
             System.out.println("You dont have " + arg[0]);
         }
     }
+
+    boolean nextLevel(){
+        if (currentLevel.checkAllCleared()){
+            level += 1;
+            if (level == 2) {
+                currentLevel = new LevelTwo();
+                return true;
+            }else if (level == 3){
+                currentLevel = new LevelThree();
+                return true;
+            }else if (level >= 3){
+                System.out.println("You did it!! You cleared all 3 levels");
+                System.out.println("Thank you for playing!");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    void clearAll(){
+        currentLevel.clearAll();
+    }
+
+
 
 
 

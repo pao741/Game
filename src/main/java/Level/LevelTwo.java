@@ -7,24 +7,27 @@ public class LevelTwo extends Map{
     private static ArrayList<ArrayList<Room>> map;
 
     public LevelTwo(){
+        map = new ArrayList<>();
         createMap();
     }
 
     public void createMap(){
+        ArrayList<Room> x;
         for (int i = 0; i < 4; i++){
+            x = new ArrayList<>();
             for (int j = 0; j < 4; j++){
-                int[] pos = new int[]{i,j};
                 if (blueprint[i][j] == 1){
                     EnemyRoom enemyRoom = new EnemyRoom(2);
-                    map.get(i).add(enemyRoom);
+                    x.add(enemyRoom);
                 }else if (blueprint[i][j] == 2){
                     LootRoom lootRoom = new LootRoom(2);
-                    map.get(i).add(lootRoom);
+                    x.add(lootRoom);
                 }else{
                     BossRoom bossRoom = new BossRoom();
-                    map.get(i).add(bossRoom);
+                    x.add(bossRoom);
                 }
             }
+            map.add(x);
         }
     }
 
