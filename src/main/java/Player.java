@@ -10,7 +10,6 @@ public class Player {
 
     private static int maxHealth;
 
-    private static int exp;
 
     private static ArrayList<Item> inventory;
 
@@ -19,21 +18,16 @@ public class Player {
     private static int level;
 
     Player(){
-        exp = 0;
-        maxHealth = 20;
+        maxHealth = 60;
         inventory = new ArrayList<Item>();
         level = 1;
         position = new int[]{2,0};
-        health = 20;
+        health = 60;
         inventory.add(ItemFactory.createItem("Stick"));
         inventory.add(ItemFactory.createItem("Bandage"));
         inventory.add(ItemFactory.createItem("Bandage"));
     }
 
-    public void levelUp(){
-        maxHealth += 10;
-        health = maxHealth;
-    }
 
     public void playerInfo(){
         System.out.println("Player Health : " + health +"/"+maxHealth + "HP");
@@ -76,14 +70,6 @@ public class Player {
         this.maxHealth = maxHealth;
     }
 
-    public void increaseExp(int exp) {
-        this.exp += exp;
-        while(this.exp > level * 10){
-            this.exp -= level * 10;
-            level += 1;
-        }
-    }
-
     public ArrayList<Item> getInventory() {
         return inventory;
     }
@@ -124,5 +110,15 @@ public class Player {
             }
         }
         return false;
+    }
+
+    public void take(Weapon weapon){
+        for (int i = 0; i < inventory.size(); i++){
+            if (weapon.getName().equals(inventory.get(i).getName())){
+                weapon = (Weapon) inventory.get(i);
+                weapon.setAttack((int)(weapon.getAttackValue() * 1.1));
+            }
+        }
+
     }
 }
