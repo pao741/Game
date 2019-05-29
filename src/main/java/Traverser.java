@@ -236,6 +236,9 @@ public class Traverser {
     }
 
     boolean nextLevel(){
+        if (player.getHealth() <= 0){
+            return false;
+        }
         if (currentLevel.checkAllCleared()){
             level += 1;
             if (level == 2) {

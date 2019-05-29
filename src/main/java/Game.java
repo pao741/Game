@@ -50,6 +50,7 @@ public class Game {
                 "take – take command is used to pick up the item in the current room\n" +
                 "drop – drop item of choice that the player currently carries.\n" +
                 "attack – attack a monster in the current room.\n" +
+                "use - use a consumable item in your inventory to restore health"+
                 "quit – quit the game\n"+
                 "north - move to the north\n" +
                 "south - move to the south\n" +

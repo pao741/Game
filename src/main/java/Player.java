@@ -10,6 +10,7 @@ public class Player {
 
     private static int maxHealth;
 
+    private static boolean isAlive;
 
     private static ArrayList<Item> inventory;
 
@@ -18,6 +19,7 @@ public class Player {
     private static int level;
 
     Player(){
+        isAlive = true;
         maxHealth = 100;
         inventory = new ArrayList<Item>();
         level = 1;
