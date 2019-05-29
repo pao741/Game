@@ -131,7 +131,6 @@ public class Traverser {
         currentLevel.getMap().get(pos[0]).get(pos[1]).getRoomInfo();
     }
 
-
     void attack(String[] arg){
         int[] pos = player.getPosition();
         if (!(currentLevel.getMap().get(pos[0]).get(pos[1]) instanceof LootRoom)){
@@ -190,6 +189,8 @@ public class Traverser {
                     System.out.println("You don't see any " + enemy);
                 }
                 currentRoom.getRoomInfo();
+                System.out.println("\t");
+                player.playerInfo();
             }
 
         }else{
@@ -254,6 +255,7 @@ public class Traverser {
 
     void clearAll(){
         currentLevel.clearAll();
+        System.out.println("The level is cleared");
     }
 
 

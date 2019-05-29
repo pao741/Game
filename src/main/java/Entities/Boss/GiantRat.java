@@ -13,7 +13,7 @@ public class GiantRat extends Entities {
         isAlive = true;
     }
     public String getName() {
-        return "GiantRat";
+        return "Giant Rat";
     }
 
     public void setHealth(int health) {

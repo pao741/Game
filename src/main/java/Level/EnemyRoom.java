@@ -79,6 +79,7 @@ public class EnemyRoom extends Room{
             for (int i = 0; i < enemies.size(); i++) {
 //                System.out.println(enemies.size());
                 Entities entity = enemies.get(i);
+                System.out.print("\t");
                 entity.getInfo();
             }
         }else{

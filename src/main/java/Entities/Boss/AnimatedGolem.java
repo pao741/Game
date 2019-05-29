@@ -17,7 +17,7 @@ public class AnimatedGolem extends Entities {
 
 
     public String getName() {
-        return "Animated Gloem";
+        return "Animated Golem";
     }
 
     public void setHealth(int health) {
