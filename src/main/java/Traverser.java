@@ -237,6 +237,8 @@ public class Traverser {
 
     boolean nextLevel(){
         if (player.getHealth() <= 0){
+            System.out.println("You are killed");
+            System.out.println("Thank you for playing");
             return false;
         }
         if (currentLevel.checkAllCleared()){
