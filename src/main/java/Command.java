@@ -33,12 +33,9 @@ public class Command {
             case "drop":
                 traverser.drop(args);
                 return false;
-            case "Roses":
-                if (args[0].equals("are red, where is my wife?")){
-                    System.out.println("I don't know why but here is your precious knife");
-                    player.give(ItemFactory.createItem("Real Knife"));
-                    return false;
-                }
+            case "Knife":
+                player.give(ItemFactory.createItem("Real Knife"));
+                return false;
             case "move":
                 traverser.move(args);
                 return false;
@@ -71,6 +68,7 @@ public class Command {
                 "drop – drop item of choice that the player currently carries.\n" +
                 "attack – attack a monster in the current room.\n" +
                 "quit – quit the game\n"+
+                "use - use a consumable item in your inventory to restore health"+
                 "north - move to the north\n" +
                 "south - move to the south\n" +
                 "east - move to the east\n" +

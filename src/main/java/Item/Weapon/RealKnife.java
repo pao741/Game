@@ -6,7 +6,7 @@ public class RealKnife extends Weapon{
 
     public RealKnife(){
         attack = 99999;
-        name = "Real knife";
+        name = "Real Knife";
     }
     @Override
     public void setAttack(int attack) {

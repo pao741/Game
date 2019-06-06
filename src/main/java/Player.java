@@ -99,7 +99,7 @@ public class Player {
 
     public Weapon getWeapon(Weapon weapon){
         for (int i = 0; i < inventory.size();i++){
-            if (inventory.get(i) instanceof Weapon){
+            if (inventory.get(i).getName().equals(weapon.getName())){
                 return (Weapon)inventory.get(i);
             }
         }

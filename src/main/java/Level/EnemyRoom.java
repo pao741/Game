@@ -17,7 +17,7 @@ public class EnemyRoom extends Room{
 
     private final double theifSpawn = 0.25;
 
-    private static boolean isCleared;
+    private  boolean isCleared;
 
     private final String NAME = "Enemy room";
 
@@ -88,7 +88,7 @@ public class EnemyRoom extends Room{
 
     }
     public boolean getRoomState(){
-        return isCleared;
+        return this.isCleared;
     }
 
     @Override

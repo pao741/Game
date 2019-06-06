@@ -24,7 +24,7 @@ public class LootRoom extends Room{
 
     private final String NAME = "Loot room";
 
-    private static boolean isCleared;
+    private boolean isCleared;
 
 
     private Random rand = new Random();

@@ -92,9 +92,9 @@ public class Traverser {
     }
 
     void take(){
-        int[] playerPos = player.getPosition();
-        if (currentLevel.getMap().get(playerPos[0]).get(playerPos[1]) instanceof LootRoom) {
-            ArrayList<Item> items = ((LootRoom) currentLevel.getMap().get(playerPos[0]).get(playerPos[1])).getLoot();
+        int[] pos = player.getPosition();
+        if (currentLevel.getMap().get(pos[0]).get(pos[1]) instanceof LootRoom) {
+            ArrayList<Item> items = ((LootRoom) currentLevel.getMap().get(pos[0]).get(pos[1])).getLoot();
             for (Item item: items){
                 if (item instanceof Weapon){
                     player.take((Weapon) item);
@@ -102,6 +102,7 @@ public class Traverser {
                     player.take((Consumable) item);
                 }
             }
+            currentLevel.getMap().get(pos[0]).get(pos[1]).setIsCleared();
         } else {
             System.out.println("\tThis is not a loot room. There is nothing to take");
         }
@@ -143,7 +144,9 @@ public class Traverser {
             boolean attacked = false;
             try {
                 if (player.have(weapon)) {
+                    System.out.println(weapon.getName());
                     weapon = player.getWeapon(weapon);
+                    System.out.println(weapon.getName());
                 } else {
                     System.out.println("You don't have that weapon");
                     return;

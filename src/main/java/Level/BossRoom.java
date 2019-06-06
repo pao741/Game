@@ -16,7 +16,7 @@ public class BossRoom extends Room {
 
     private Random rand = new Random();
 
-    private static boolean isCleared;
+    private boolean isCleared;
 
     private final String NAME = "Boss room";
 
