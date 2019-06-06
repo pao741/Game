@@ -3,7 +3,7 @@ package Entities;
 public class Rat extends Entities{
     private static int health;
     private static int maxHealth;
-    private final int ATTACK = 15;
+    private final int ATTACK = 10;
 
     Rat(){
         maxHealth = 30;

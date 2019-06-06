@@ -2,7 +2,7 @@ package Entities;
 
 public class Skeleton extends Entities {
     private static int health;
-    private final int ATTACK = 25;
+    private final int ATTACK = 10;
     private static int maxHealth;
 
     Skeleton(){
