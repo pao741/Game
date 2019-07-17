@@ -6,7 +6,7 @@ public class TornNotebook extends Weapon{
 
     public TornNotebook(){
         attack = 15;
-        name = "Torn notebook";
+        this.name = "Torn notebook";
     }
     @Override
     public void setAttack(int attack) {

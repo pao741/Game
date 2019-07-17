@@ -3,8 +3,8 @@ package Level;
 import java.util.ArrayList;
 
 public class LevelThree extends Map{
-    private static int[][] blueprint = {{1,3,1,2},{2,1,3,2},{1,1,2,3},{2,2,1,2}};
-    private static ArrayList<ArrayList<Room>> map;
+    private int[][] blueprint = {{1,3,1,2},{2,1,3,2},{1,1,2,3},{2,2,1,2}};
+    private  ArrayList<ArrayList<Room>> map;
 
     public LevelThree(){
         map = new ArrayList<>();

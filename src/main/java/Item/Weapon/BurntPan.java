@@ -6,7 +6,7 @@ public class BurntPan extends Weapon{
 
     public BurntPan(){
         attack= 50;
-        name= "Burnt pan";
+        this.name= "Burnt Pan";
     }
     @Override
     public void setAttack(int attack) {

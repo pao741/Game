@@ -3,9 +3,9 @@ package Entities.Boss;
 import Entities.Entities;
 
 public class BigSlime extends Entities {
-    private static int health;
+    private int health;
     private final int ATTACK = 25;
-    private static int maxHealth;
+    private int maxHealth;
 
     public BigSlime(){
         maxHealth = 80;

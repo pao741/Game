@@ -1,9 +1,9 @@
 package Entities;
 
 public class SmallSlime extends Entities{
-    private static int health;
+    private int health;
     private final int ATTACK = 10;
-    private static int maxHealth;
+    private int maxHealth;
 
     SmallSlime(){
         maxHealth = 10;

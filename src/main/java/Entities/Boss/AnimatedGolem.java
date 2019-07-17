@@ -3,9 +3,9 @@ package Entities.Boss;
 import Entities.Entities;
 
 public class AnimatedGolem extends Entities {
-    private static int health;
+    private int health;
 
-    private static int maxHealth;
+    private int maxHealth;
 
     private final int ATTACK = 25;
 

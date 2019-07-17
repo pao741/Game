@@ -3,9 +3,9 @@ package Entities.Boss;
 import Entities.Entities;
 
 public class GiantRat extends Entities {
-    private static int health;
+    private int health;
     private final int ATTACK = 30;
-    private static int maxHealth;
+    private int maxHealth;
 
     public GiantRat(){
         maxHealth = 90;

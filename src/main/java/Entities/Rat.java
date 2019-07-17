@@ -1,8 +1,8 @@
 package Entities;
 
 public class Rat extends Entities{
-    private static int health;
-    private static int maxHealth;
+    private int health;
+    private int maxHealth;
     private final int ATTACK = 10;
 
     Rat(){

@@ -13,16 +13,8 @@ public abstract class Entities {
         setHealth(getHealth() - damage);
     }
 
-    public int attact(){
-        return getATTACK();
-    }
-
-    public void introduce(){
-        System.out.println("You see a " + getName() + " fast approach.");
-    }
-
     public void getInfo(){
-        System.out.println(getName() + ": " + getHealth() + "/" + getMaxHealth());
+        System.out.println(getName() + ": " + getHealth() + "/" + getMaxHealth()+ "hp");
     }
 
 }

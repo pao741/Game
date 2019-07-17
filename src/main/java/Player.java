@@ -36,7 +36,7 @@ public class Player {
     }
 
     public void inventoryInfo(){
-        System.out.println("Inventory :\n");
+        System.out.println("Inventory :");
         for (int i = 0; i < inventory.size(); i++){
             System.out.print("\t"+inventory.get(i).getName());
             if (inventory.get(i)instanceof Consumable){

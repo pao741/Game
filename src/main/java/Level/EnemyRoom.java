@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class EnemyRoom extends Room{
 
-    private static ArrayList<Entities> enemies;
+    private ArrayList<Entities> enemies;
 
     private final double ratSpawn = 0.99;
 
@@ -67,8 +67,7 @@ public class EnemyRoom extends Room{
         return enemies;
     }
 
-    public void setEnemies(ArrayList<Entities> enemies) {
-        EnemyRoom.enemies = enemies;
+    public void setEnemies(ArrayList<Entities> enemies) {this.enemies = enemies;
     }
 
     @Override

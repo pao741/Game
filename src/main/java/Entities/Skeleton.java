@@ -1,9 +1,9 @@
 package Entities;
 
 public class Skeleton extends Entities {
-    private static int health;
+    private int health;
     private final int ATTACK = 10;
-    private static int maxHealth;
+    private int maxHealth;
 
     Skeleton(){
         maxHealth = 40;

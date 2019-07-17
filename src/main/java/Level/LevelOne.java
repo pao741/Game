@@ -6,7 +6,7 @@ public class LevelOne extends Map{
     private int[][] blueprint = {{1,2,1,2},{2,3,1,1},{1,2,2,1},{1,2,2,1}};
 //    private static Room[][] map = new Room[4][4];
 
-    private static ArrayList<ArrayList<Room>> map;
+    private ArrayList<ArrayList<Room>> map;
 
     public LevelOne(){
         map = new ArrayList<>();

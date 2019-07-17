@@ -66,6 +66,7 @@ public class Traverser {
             } else{
                 System.out.println("Direction choices: north/south/east/west");
             }
+            printCurrentRoomInfo();
     }
 
     void info(String[] arg){
@@ -173,8 +174,6 @@ public class Traverser {
                 for (int i = 0; i < enemies.size(); i++){
                     Entities each = enemies.get(i);
                     if (each.getName().equals(enemy) && !attacked){
-//                        each.getInfo();
-//                        Entities target = enemies.get(enemies.indexOf(EntitiesFactory.createEntities(enemy)));
                         each.setHealth(each.getHealth() - weapon.getAttackValue());
                         enemies.set(i,each);
                         currentRoom.checkIfCleared();
@@ -192,7 +191,6 @@ public class Traverser {
                     System.out.println("You don't see any " + enemy);
                 }
                 currentRoom.getRoomInfo();
-                System.out.println("\t");
                 player.playerInfo();
             }
 

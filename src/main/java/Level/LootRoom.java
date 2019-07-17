@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class LootRoom extends Room{
 
-    private static ArrayList<Item> loot;
+    private ArrayList<Item> loot;
 
     private final double bandage = 0.99;
 

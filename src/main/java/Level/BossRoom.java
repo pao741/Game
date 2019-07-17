@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BossRoom extends Room {
-    private static ArrayList<Entities> bosses;
+    private ArrayList<Entities> bosses;
 
     private final double animatedGolemSpawn = 0.33;
 
