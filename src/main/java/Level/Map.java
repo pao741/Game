@@ -13,7 +13,6 @@ public abstract class Map {
                 }
             }
         }
-        System.out.println("The level is clear");
         return true;
     }
 
@@ -24,4 +23,5 @@ public abstract class Map {
                 }
             }
         }
+
 }

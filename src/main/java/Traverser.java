@@ -4,8 +4,6 @@ import Item.Consumable.Consumable;
 import Item.Weapon.Weapon;
 import Level.*;
 
-import java.io.Console;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +11,6 @@ public class Traverser {
     private static Player player;
     private static Map currentLevel;
     private static int level;
-//    private ArrayList<Room> grid;
 
     public Traverser(){
         level = 1;
@@ -262,6 +259,7 @@ public class Traverser {
     void clearAll(){
         currentLevel.clearAll();
         System.out.println("The level is cleared");
+        printCurrentRoomInfo();
     }
 
 
